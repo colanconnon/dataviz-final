@@ -42,12 +42,18 @@
                                     <li style="font-size: 14; text-align: left;">Visualize strike out data by pitch type and location</li>
                                 </ul>
                             </p>
+                            <p style="font-size: 14; text-align: left;">
+                                To navigate you can click the right arrow in the bottom corner. Some slides you can go down to drill into the data further.
+                            </p>
                         </div>
                         <div class="col-sm-3 ml-4">
                             <h5 style="font-size: 16;">Dataset</h5>
                             <p style="font-size: 14; text-align: left;">
-                                The main purpose of this visualization is to walk through Justin Verlander's pitching career and break down
-
+                                The dataset used for this project is the
+                                <a href="https://en.wikipedia.org/wiki/Statcast">
+                                    MLB statcast dataset.</a>
+                                <br /> All data was downloaded in python and exported to csv using the
+                                <a href="https://github.com/jldbc/pybaseball">pybaseball package</a>
                             </p>
                         </div>
                         <div class="col-sm-3 ml-4">
@@ -100,9 +106,11 @@
                     <h5 style="font-size: 18;">ERA/WHIP vs Fastball Velocity</h5>
                     <div class="row justify-content-md-center">
                         <div class="col-sm-3">
-                            <p style="font-size: 14; text-align: left;"> Early in his career he starts with just the fastball, curveball, and changeup</p>
-                            <p style="font-size: 14; text-align: left;"> As his career progressed he added a slider, and in the last two years, relies less on the change
-                                up
+                            <p style="font-size: 14; text-align: left;">
+                                Justin Verlander is a power pitcher and relies on his fastball for his dominance
+                            </p>
+                            <p style="font-size: 14; text-align: left;">
+                                We can see that when his fastball velocity dipped for a few season it caused his ERA to go up.
                             </p>
                         </div>
                         <div class="ml-5 col-sm-4">
@@ -115,6 +123,7 @@
                 <section>
                     <div class="container-fluid">
                         <h5 style="font-size: 18;">Strikeouts By Year</h5>
+                        <p style="font-size: 10;" class="help-text"> Might take a few seconds to load in between transitions.</p>
                         <div class="row justify-content-md-center">
                             <div class="col-sm-3" style="text-align: left;">
                                 <p style="font-size: 14; text-align: left;" id="strikeOutTxt">
@@ -133,6 +142,7 @@
                     <div class="container-fluid">
 
                         <h3 style="font-size: 18;">Individual Pitch Analysis</h3>
+                        <p style="font-size: 10;" class="help-text"> Might take a few seconds to load in between transitions.</p>
                         <div class="row justify-content-md-center">
                             <div class="col-md-2 mr-5">
                                 <div class="row">
@@ -145,6 +155,12 @@
                                         <option value="2010"> 2010</option>
                                         <option value="2011"> 2011</option>
                                         <option value="2012"> 2012</option>
+                                        <option value="2013"> 2013</option>
+                                        <option value="2014"> 2014</option>
+                                        <option value="2015"> 2015</option>
+                                        <option value="2016"> 2016</option>
+                                        <option value="2017"> 2017</option>
+                                        <option value="2018"> 2018</option>
                                     </select>
                                 </div>
                             </div>
@@ -193,24 +209,42 @@
                         <div class="row justify-content-md-center my-3">
                             <div class="col-sm-6">
                                 <p style="font-size: 14; text-align: left;">
-                                    This visualization is an interactive slide show, where each scene displays a graph
-                                    and as you progress throw the slide show it goes into more detail.
+                                    This visualization is an interactive slide show, where each scene displays a graph and as you progress throw the slide show
+                                    it goes into more detail. Navigation is in the bottom right hand corner, and you can go forward, backwards, and on some slides (1, 3) you can
+                                    even go down and up.
                                 </p>
                                 <p style="font-size: 14; text-align: left;">
-                                    Each scene has a graph and some text explaining some insight from the graph.
+                                    Each scene has a graph and some text explaining some insight from the graph. All scenes data is cleared
+                                    when you click the arrow at the bottom to go to the next slide.
                                 </p>
                                 <p style="font-size: 14; text-align: left;">
-                                    Each graph has some text explaining the graph, and the ERA vs Fastball graph has an
-                                    annotation explaining a key point in the graph.
+                                    For annotations each graph has some text explaining the graph, and the ERA vs Fastball graph has an annotation explaining a key point in
+                                    the graph.
                                 </p>
                                 <p style="font-size: 14; text-align: left;">
-                                    Parameters on used in the last two graphs. Strikes outs over years graph allows
-                                    you to go forward and backward in time to see the strikeouts over the years.
-                                    The last graph allows you to adjust the year, event type and batter stance to get a view
-                                    of the different results of different pitches.
+                                    Parameters on used in the last two graphs. Strikes outs over years graph allows you to go forward and backward in time to
+                                    see the strikeouts over the years. The last graph allows you to adjust the year, event
+                                    type and batter stance to get a view of the different results of different pitches.
                                 </p>
                                 <p style="font-size: 14; text-align: left;">
-                                    Triggers stuff goes here
+                                    The main triggers are mouse over events to show tool tips for details on demand. In the individual pitch visualization, the
+                                    trigger applies opacity to all other points in the scatter plot and makes the point the
+                                    user is focusing on bigger. The button click on the strikeout visualization slide also
+                                    changes the year parameter as the user progresses through the visualization, so the user
+                                    can see how strikeout pitches change over time.
+                                </p>
+                            </div>
+                            <div class="col-md-5 ml-2">
+                                <p style="font-size: 14; text-align: left;">
+                                    User interface Events:
+                                    <p style="font-size: 14; text-align: left;">
+                                        All Charts expect Fastball vs ERA over time support mouse over events on data items to show tooltips</p>
+                                    <p style="font-size: 14; text-align: left;">
+                                        The strikeouts over time has a button click event which changes strikeout data over time. This changes
+                                    the year parameter over time.</p>
+                                    <p style="font-size: 14; text-align: left;">
+                                        The individual pitch analysis allows users to select three parameters from a dropdown: Year, Game Event, and Batter Stance.
+                                    </p>
                                 </p>
                             </div>
                         </div>

@@ -57,7 +57,6 @@ function constructStatLineGraph(data, pitchData) {
   var line3 = d3
     .line()
     .x(function(d) {
-      console.log(d);
       return x(parseTime(d.year));
     })
     .y(function(d) {

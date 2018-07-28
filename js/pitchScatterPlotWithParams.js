@@ -3,18 +3,11 @@ function constructScatterPlotWithParams(data) {
     width = 500 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
-  // parse the date / time
-  var parseTime = d3.timeParse("%d-%b-%y");
 
-  // set the ranges
   var x = d3.scaleLinear().range([-5, width]);
   var y = d3.scaleLinear().range([height, 0]);
 
-  // define the line
 
-  // append the svg obgect to the body of the page
-  // appends a 'group' element to 'svg'
-  // moves the 'group' element to the top left margin
   var svg = d3
     .select("#graph4")
     .append("svg")
@@ -58,7 +51,7 @@ function constructScatterPlotWithParams(data) {
   var square = [{ x1: 110, x2: 310, y1: 55, y2: 180 }];
   var keys = ["FF", "CH", "CU", "SL"];
 
-  var rects = svg
+  svg
     .selectAll(".squares")
     .data(square)
     .enter()

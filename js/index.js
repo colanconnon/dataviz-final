@@ -37,8 +37,6 @@ Promise.all([promise1, promise2]).then((data) => {
     slideNumber: true,
     help: true,
     history: true,
-    // minScale: 1,
-    // maxScale: 1
   });
   constructStackedBarPitchesByYear(data[0]);
   constructPitchGraph(data[0]);
@@ -88,15 +86,28 @@ function goToAbout() {
   Reveal.slide(4)
 };
 
+function hideAndShowBtnsBasedOnYears() {
+  $("#btnClickAdd").show();
+  $("#btnClickSub").show();
+  if (year === 2018) {
+    $("#btnClickAdd").hide();
+  }
+  if (year === 2008) {
+    $("#btnClickSub").hide();
+  }
+}
 
 var year = 2008;
+hideAndShowBtnsBasedOnYears();
 $("#btnClickAdd").on("click", function() {
   year = year + 1;
+  hideAndShowBtnsBasedOnYears();
   updateStrikeoutsByYear(year);
 });
 
 $("#btnClickSub").on("click", function() {
   year = year - 1;
+  hideAndShowBtnsBasedOnYears();
   updateStrikeoutsByYear(year);
 });
 
@@ -195,7 +206,6 @@ function constructStackBarChart(data) {
   data.sort(function(a, b) {
     return b.Count - a.Count;
   });
-  console.log(data);
   x.domain(
     data.map(function(d) {
       return d.FullName;
@@ -233,7 +243,6 @@ function constructStackBarChart(data) {
     })
     .attr("width", x.bandwidth())
     .on("mouseover", function(d) {
-      console.log(d);
       let event = Object.keys(d.data).find(k => d.data[k] == d[1] - d[0]);
       tooltip.html(`Count: ${d[1] - d[0]} <br /> 
                   Event: ${event} <br />
