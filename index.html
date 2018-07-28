@@ -1,0 +1,197 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/night.css">
+</head>
+
+<body>
+    <div style="position: absolute; bottom: 0; left: 0; background-color: red; padding: 30; color: white;">
+        About this visulization
+    </div>
+    <div class="reveal" style="display: none;">
+        <div class="slides">
+            <section>
+                <div class="container-fluid">
+                    <h5 style="font-size: 18;">Justin Verlander MLB Pitch Data Visulization</h5>
+                    <div class="row justify-content-md-center my-5">
+                        <div class="col-sm-3">
+                            <h5 style="font-size: 16;">Summary</h5>
+                            <p style="font-size: 14; text-align: left;">
+                                This visulization uses data from
+                                <a href="https://en.wikipedia.org/wiki/Justin_Verlander">
+                                Justin Verlander </a>
+                                a MLB (
+                                <a href="https://en.wikipedia.org/wiki/Major_League_Baseball">Major League Baseball </a>) pitcher.
+                            </p>
+                            <p style="font-size: 14; text-align: left;">
+                                The main purpose of this visulization is to walk through Justin Verlander's pitching career and break down
+                                <ul>
+                                    <li style="font-size: 14; text-align: left;">What types of pitches he throws</li>
+                                    <li style="font-size: 14; text-align: left;">What is his main dominant pitch</li>
+                                    <li style="font-size: 14; text-align: left;">Visulize strike out data by pitch type and location</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="col-sm-3 ml-4">
+                            <h5 style="font-size: 16;">Dataset</h5>
+                            <p style="font-size: 14; text-align: left;">
+                                The main purpose of this visulization is to walk through Justin Verlander's pitching career and break down
+
+                            </p>
+                        </div>
+                        <div class="col-sm-3 ml-4">
+                            <h5 style="font-size: 16;">Special Terms</h5>
+                            <p style="font-size: 14; text-align: left;">ERA: </p>
+                            <p style="font-size: 14; text-align: left;"></p>
+                            <p style="font-size: 14; text-align: left;"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <section>
+                    <div class="container-fluid">
+                        <h5 style="font-size: 18;">Pitch Type Breakdown</h5>
+                        <div class="row justify-content-md-center">
+                            <div class="offset-sm-1 col-sm-2">
+                                <p style="font-size: 14; text-align: left;">
+                                    Justin Verlander's main pitch is a fastball.
+                                    <br />
+                                    <br /> He has thrown a good mix of offspeed pitches to support his fastball.
+                                </p>
+                            </div>
+                            <div class="ml-5 col-sm-4">
+                                <div id="graph1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="container-fluid">
+                        <h5 style="font-size: 18;">Pitch Type Breakdown By Year</h5>
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-3">
+                                <p style="font-size: 14; text-align: left;"> Early in his career he starts with just the fastball, curveball, and changeup</p>
+                                <p style="font-size: 14; text-align: left;"> As his career progressed he added a slider, and in the last two years, relies less on the
+                                    change up</p>
+                            </div>
+                            <div class="ml-5 col-sm-4">
+                                <svg id="graph1a" height=400 width=650></svg>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+            </section>
+            <section>
+                <div class="container-fluid">
+                    <h5 style="font-size: 18;">ERA/WHIP vs Fastball Velocity</h5>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-3">
+                            <p style="font-size: 14; text-align: left;"> Early in his career he starts with just the fastball, curveball, and changeup</p>
+                            <p style="font-size: 14; text-align: left;"> As his career progressed he added a slider, and in the last two years, relies less on the change
+                                up
+                            </p>
+                        </div>
+                        <div class="ml-5 col-sm-4">
+                            <svg id="graph0" width="400" height="400"></svg>
+                        </div>
+
+                    </div>
+            </section>
+            <section>
+                <section>
+                    <div class="container-fluid">
+                        <h5 style="font-size: 18;">Strikeouts By Year</h5>
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-3" style="text-align: left;">
+                                <p style="font-size: 14; text-align: left;" id="strikeOutTxt">
+                                    Boom
+                                </p>
+                                <button class="btn btn-primary" id="btnClickSub">Prev Year</button>
+                                <button class="btn btn-primary" id="btnClickAdd">Next Year</button>
+                            </div>
+                            <div class="ml-3 col-sm-4">
+                                <div id="graph3"> </div>
+                            </div>
+
+                        </div>
+                </section>
+                <section>
+                    <div class="container-fluid">
+
+                        <h3 style="font-size: 18;">Individual Pitch Analysis</h3>
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-2 mr-5">
+                                <div class="row">
+                                    <p class="small-font">Game Year</p>
+                                </div>
+                                <div class="row">
+                                    <select id="pitchSctYearSlt" class="form-control small-select">
+                                        <option selected value="2008"> 2008</option>
+                                        <option value="2009"> 2009</option>
+                                        <option value="2010"> 2010</option>
+                                        <option value="2011"> 2011</option>
+                                        <option value="2012"> 2012</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <p class="small-font">Game Event</p>
+                                </div>
+                                <div class="row">
+                                    <select id="pitchSctEventSlt" class="form-control small-select">
+                                        <option selected value="strikeout">Strike Out</option>
+                                        <option value="home_run">Homerun</option>
+                                        <option value="single">Single</option>
+                                        <option value="double">Double</option>
+                                        <option value="triple">Triple</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <div class="col-xs-2">
+                                <p class="small-font"> Text here about the thing</p>
+                            </div>
+                            <div class="ml-5 col-xs-4">
+                                <div id="graph4"> </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+            <section>
+                <section>Vertical Slide 1</section>
+                <section>Vertical Slide 2</section>
+            </section>
+            </div>
+            </div>
+            <script src="js/reveal.js"></script>
+
+            <script src="js/d3.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                crossorigin="anonymous"></script>
+            <script src="js/pitchesBubbleGraph.js"></script>
+            <script src="js/statLineGraph.js"></script>
+            <script src="js/stackedBarPitchesByYear.js"></script>
+            <script src="js/pitchScatterPlot.js"></script>
+            <script src="js/pitchScatterPlotWithParams.js"></script>
+            <script src="js/index.js"></script>
+</body>
+
+</html>
