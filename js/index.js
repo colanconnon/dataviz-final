@@ -20,11 +20,13 @@ var tooltip = d3
   .style("font", "12px sans-serif")
   .text("tooltip");
 
+
 var promise1 = d3.csv("verlander_pitches.csv");
 var promise2 = d3.csv("verlander_stats.csv");
 
 Promise.all([promise1, promise2]).then((data) => {
   $(".reveal").fadeIn();
+  $("#loading").hide();
   Reveal.initialize({
     controls: true,
     controlsTutorial: true,
@@ -43,25 +45,49 @@ Promise.all([promise1, promise2]).then((data) => {
   constructStatLineGraph(data[1], data[0]);
   // constructStackBarChart(data);
   updatePitchScatter = constructScatterPlotWithParams(data[0]);
-  updatePitchScatter({ game_year: 2008, events: "strikeout" });
+  updatePitchScatter({ game_year: 2008, events: "strikeout", stance: "A" });
   updateStrikeoutsByYear = constructScatterPlot(data[0]);
   updateStrikeoutsByYear(2008);
 });
 
-var filterOptions = { game_year: 2008, events: "strikeout" };
+var filterOptions = { game_year: 2008, events: "strikeout", stance: "A" };
 $("#pitchSctYearSlt").on("change", function() {
   filterOptions = updatePitchScatter({
     game_year: this.value,
-    events: filterOptions.events
+    events: filterOptions.events,
+    stance: filterOptions.stance
   });
 });
 
 $("#pitchSctEventSlt").on("change", function() {
   filterOptions = updatePitchScatter({
     game_year: filterOptions.game_year,
-    events: this.value
+    events: this.value,
+    stance: filterOptions.stance
   });
 });
+
+$("#pitchSctEventSlt").on("change", function() {
+  filterOptions = updatePitchScatter({
+    game_year: filterOptions.game_year,
+    events: this.value,
+    stance: filterOptions.stance
+  });
+});
+
+$("#batterStanceSlt").on("change", function() {
+  filterOptions = updatePitchScatter({
+    game_year: filterOptions.game_year,
+    events: filterOptions.events,
+    stance: this.value
+  });
+});
+
+
+function goToAbout() {
+  Reveal.slide(4)
+};
+
 
 var year = 2008;
 $("#btnClickAdd").on("click", function() {

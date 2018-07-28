@@ -141,6 +141,12 @@ function constructScatterPlotWithParams(data) {
         }
         return d;
       })
+      .filter(d => {
+        if ("stance" in obj && obj.stance !== 'A') {
+          return d.stand == obj.stance;
+        }
+        return d;
+      })
       .attr("cx", function(d) {
         return x(d.plate_x);
       })
