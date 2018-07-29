@@ -166,18 +166,18 @@ function constructScatterPlot(data) {
         text:
           "Year: 2008. <br /> Early in JV's career he relied on mainly on the fastball, curveball, and changeup"
       },
-      { year: 2009, text: "Year: 2009 <br /> JV added the slider this year, but still mainly stuck fastball, curveball, and changeup" },
-      { year: 2010, text: "Year: 2010 <br /> JV Started to throw the slider more this year." },
+      { year: 2009, text: "Year: 2009 <br /> JV started throwing a few sliders, but still mainly stuck fastball, curveball, and changeup" },
+      { year: 2010, text: "Year: 2010 <br /> JV Started to throw the slider more, especially to get hitters to chase outside the strike zone." },
       { year: 2011, text: "Year: 2011 <br /> JV won MVP this season as he started to get more people out with the slider out of the zone." },
-      { year: 2012, text: "Year: 2012 <br /> This season he really didn't switch much" },
-      { year: 2013, text: "Year: 2013 <br /> JV continues to stick with his main pitches not switching it up much." },
+      { year: 2012, text: "Year: 2012 <br /> He kept the slider more in the strike zone this year, not getting hitters to chase as much." },
+      { year: 2013, text: "Year: 2013 <br /> JV starts to throw the change up less and getting hitters to chase the slider outside the strikezone again" },
       { year: 2014, text: "Year: 2014 <br /> JV's strikeout totals really start to drop, especially on fastballs." },
       {
         year: 2015,
         text:
           "Year: 2015.<br />  He had an injury in 2015, really causing his velocity fastball to drop, and it causes his strikeout total to plummet"
       },
-      { year: 2016, text: "Year: 2016 <br /> After coming back from a bad 2015 season, we see he starts to get people out on the slider." },
+      { year: 2016, text: "Year: 2016 <br /> After coming back from a bad 2015 season, we see his fastball becomes more effective than 2015." },
       {
         year: 2017,
         text:

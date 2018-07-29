@@ -2,11 +2,11 @@ var color = d3.scaleOrdinal(d3.schemeCategory10);
 var updateStrikeoutsByYear = null;
 var updatePitchScatter = null;
 var pitchTypeLookup = {
-  "FF": "Fastball",
-  "SL": "Slider",
-  "CU": "Curveball",
-  "CH": "Change Up"
-}
+  FF: "Fastball",
+  SL: "Slider",
+  CU: "Curveball",
+  CH: "Change Up"
+};
 var tooltip = d3
   .select("body")
   .append("div")
@@ -20,11 +20,21 @@ var tooltip = d3
   .style("font", "12px sans-serif")
   .text("tooltip");
 
-
 var promise1 = d3.csv("verlander_pitches.csv");
 var promise2 = d3.csv("verlander_stats.csv");
 
-Promise.all([promise1, promise2]).then((data) => {
+Promise.all([promise1, promise2]).then(data => {
+  data[0] = data[0].filter(function(x) {
+    if (
+      x.pitch_type == "FF" ||
+      x.pitch_type === "SL" ||
+      x.pitch_type == "CU" ||
+      x.pitch_type == "CH"
+    ) {
+      return true;
+    }
+    return false;
+  });
   $(".reveal").fadeIn();
   $("#loading").hide();
   Reveal.initialize({
@@ -36,7 +46,7 @@ Promise.all([promise1, promise2]).then((data) => {
     center: false,
     slideNumber: true,
     help: true,
-    history: true,
+    history: true
   });
   constructStackedBarPitchesByYear(data[0]);
   constructPitchGraph(data[0]);
@@ -81,10 +91,10 @@ $("#batterStanceSlt").on("change", function() {
   });
 });
 
-
 function goToAbout() {
-  Reveal.slide(4)
-};
+  Reveal.slide(4);
+}
+
 
 function hideAndShowBtnsBasedOnYears() {
   $("#btnClickAdd").show();
@@ -111,7 +121,12 @@ $("#btnClickSub").on("click", function() {
   updateStrikeoutsByYear(year);
 });
 
-
+function goToStart() {
+  year = 2008
+  hideAndShowBtnsBasedOnYears();
+  updateStrikeoutsByYear(year);
+  Reveal.slide(0);
+}
 
 function constructStackBarChart(data) {
   data = JSON.parse(JSON.stringify(data));

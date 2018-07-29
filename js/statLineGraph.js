@@ -34,7 +34,7 @@ function constructStatLineGraph(data, pitchData) {
   }, []);
 
   data.forEach(function(d) {
-    d.year = d.Season
+    d.year = d.Season;
     d.Season = parseTime(Number(d.Season));
     d.WHIP = Number(d.WHIP);
   });
@@ -99,29 +99,30 @@ function constructStatLineGraph(data, pitchData) {
     .append("text")
     .attr(
       "transform",
-      "translate(" + ((width / 2) + 50) + " ," + (height + margin.top + 40) + ")"
+      "translate(" + (width / 2 + 50) + " ," + (height + margin.top + 40) + ")"
     )
     .style("text-anchor", "middle")
     .attr("font-size", 18)
     .text("Year");
 
-    svg
+  svg
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 15)
     .attr("x", 0 - height / 2)
     .style("text-anchor", "middle")
     .attr("font-size", 14)
+    .attr("fill", "steelblue")
     .text("Earned Run Average");
 
-
-    svg
+  svg
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", width + 90)
     .attr("x", 0 - height / 2)
     .style("text-anchor", "middle")
     .attr("font-size", 14)
+    .attr("fill", "red")
     .text("Fastball Velocity");
 
   g.selectAll("dot")
@@ -158,7 +159,6 @@ function constructStatLineGraph(data, pitchData) {
     .attr("dy", "0.71em")
     .attr("text-anchor", "end");
 
-
   g.append("path")
     .datum(data)
     .attr("fill", "none")
@@ -167,45 +167,45 @@ function constructStatLineGraph(data, pitchData) {
     .attr("stroke-linecap", "round")
     .attr("stroke-width", 1.5)
     .attr("d", line);
-    
-  g.append('g')
-      .selectAll('.myText')
-      .data(data)
-      .enter()
-      .append('text')
-      .filter(function(d) {
-        return d.year == 2014;
+
+  g.append("g")
+    .selectAll(".myText")
+    .data(data)
+    .enter()
+    .append("text")
+    .filter(function(d) {
+      return d.year == 2014;
     })
-      .attr("font-size", 8)
-      .attr('x', function(d,i){
-        return x(d.Season);
-      })
-      .attr('y', function(d,i){
-        return y(d.ERA);
-      })
-      .attr("dy", "-3.1em")
-      .text(function(d,i){
-        return `Fastball Velocity Drops`;
-      })
-      g.append('g')
-      .selectAll('.myText')
-      .data(data)
-      .enter()
-      .append('text')
-      .filter(function(d) {
-        return d.year == 2014;
+    .attr("font-size", 8)
+    .attr("x", function(d, i) {
+      return x(d.Season);
     })
-      .attr("font-size", 8)
-      .attr('x', function(d,i){
-        return x(d.Season);
-      })
-      .attr('y', function(d,i){
-        return y(d.ERA);
-      })
-      .attr("dy", "-1.8em")
-      .text(function(d,i){
-        return `ERA Rises`;
-      })
+    .attr("y", function(d, i) {
+      return y(d.ERA);
+    })
+    .attr("dy", "-3.1em")
+    .text(function(d, i) {
+      return `Fastball Velocity Drops`;
+    });
+  g.append("g")
+    .selectAll(".myText")
+    .data(data)
+    .enter()
+    .append("text")
+    .filter(function(d) {
+      return d.year == 2014;
+    })
+    .attr("font-size", 8)
+    .attr("x", function(d, i) {
+      return x(d.Season);
+    })
+    .attr("y", function(d, i) {
+      return y(d.ERA);
+    })
+    .attr("dy", "-1.8em")
+    .text(function(d, i) {
+      return `ERA Rises`;
+    });
 
   g.append("path")
     .datum(PitchSpeedData)
@@ -215,4 +215,40 @@ function constructStatLineGraph(data, pitchData) {
     .attr("stroke-linecap", "round")
     .attr("stroke-width", 1.5)
     .attr("d", line3);
+
+  var legend = g
+    .append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 8)
+    .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(["ERA", "Fastball Velocity"])
+    .enter()
+    .append("g")
+    .attr("transform", function(d, i) {
+      return "translate(0," + i * 10 + ")";
+    });
+
+  legend
+    .append("rect")
+    .attr("x", width - 20)
+    .attr("y", 30)
+    .attr("width", 10)
+    .attr("height", 19)
+    .attr("fill", function(d) {
+      if (d === "ERA") {
+        return "steelblue";
+      } else {
+        return "red";
+      }
+    });
+
+  legend
+    .append("text")
+    .attr("x", width - 23)
+    .attr("y", 34.5)
+    .attr("dy", "0.32em")
+    .text(function(d) {
+      return d;
+    });
 }
